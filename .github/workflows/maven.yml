@@ -24,7 +24,7 @@ jobs:
   test:
     name: execute unit tests
     runs-on: ubuntu-latest
-
+    needs: compile
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -39,7 +39,7 @@ jobs:
   build:
     name: build the project 
     runs-on: ubuntu-latest
-
+    needs: test
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
