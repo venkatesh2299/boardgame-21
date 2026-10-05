@@ -27,7 +27,7 @@ jobs:
     - uses: actions/upload-artifact@v7
       with:
         name: boardgane21
-        path: target/*.jar
+        path: target/*jar
 
  
 
