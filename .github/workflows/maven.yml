@@ -4,12 +4,15 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "main" ]
+env:
+    APP_NAME: devshackops-java-demo
   
 jobs:
-  build:
-    name: maven compile project
+  pre-build:
+    name: maven pre-build project
     runs-on: ubuntu-latest
-
+    env:
+      STAGE_NAME: before-package
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -22,7 +25,28 @@ jobs:
       run: |
         mvn compile
         mvn test
-        mvn package
+        echo "App name is: $APP_NAME"
+        echo Stage name is: $STAGE_NAME
+
+  build:
+    name: maven build project
+    runs-on: ubuntu-latest
+    needs: pre-build
+    env:
+      STAGE_NAME: maven_package
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: |
+        mvn package     
+        echo "App name is: $APP_NAME"
+        echo "Stage name is: $STAGE_NAME"
 
     - uses: actions/upload-artifact@v7
       with:
