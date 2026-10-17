@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "main" ]
 env:
-    APP_NAME: devshackops-java-demo
+    APP_NAME: devshackops-java-demo-kmv
   
 jobs:
   pre-build:
