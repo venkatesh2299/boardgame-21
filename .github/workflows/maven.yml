@@ -10,7 +10,7 @@ env:
 jobs:
   pre-build:
     name: maven pre-build project
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       STAGE_NAME: before-package
     steps:
@@ -30,7 +30,7 @@ jobs:
 
   build:
     name: maven build project
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: pre-build
     env:
       STAGE_NAME: maven_package
