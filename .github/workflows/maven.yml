@@ -12,7 +12,7 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      Java: ${{steps.filter.outputs.java}}
+      java: ${{steps.filter.outputs.java}}
       docker: ${{steps.filter.outputs.docker}}
       mytest: ${{steps.filter.outputs.mytest}}
     steps:
