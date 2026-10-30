@@ -54,7 +54,7 @@ jobs:
   build:
     name: maven build
     runs-on: ubuntu-latest
-    needs: [changes, pre-build]
+    needs: [changes, pre_build]
     env:
       STAGE_NAME: maven package
     if: needs.changes.outputs.java == 'true'
