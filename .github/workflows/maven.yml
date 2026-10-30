@@ -13,7 +13,7 @@ jobs:
     outputs:
       Java: ${{steps.filter.outputs.java}}
       docker: ${{steps.filter.outputs.docker}}
-      My-Test: ${{steps.filter.outputs.mytest}}
+      mytest: ${{steps.filter.outputs.mytest}}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
